@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:49:43 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/18 18:28:18 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/22 17:29:00 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_putpixel(char *ram, int i, int code) // inclure un mode pour l'endian
 	pix->blue = color[0];
 	pix->green = color[1];
 	pix->red = color[2];
-	pix->transp = color[3];
+	pix->transp = 0;
 }

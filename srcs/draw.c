@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/19 19:01:19 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/22 18:19:52 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 	dy = y2 - y1;
 	xinc = (dx > 0) ? 1 : -1;
 	yinc = (dy > 0) ? 1 : -1;
-	printf("xinc: %d\tyinc: %d\n", xinc, yinc);
+	// printf("xinc: %d\tyinc: %d\n", xinc, yinc);
 
 	dx = abs(dx);
 	dy = abs(dy);
@@ -38,7 +38,7 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 
 	if (dx > dy)
 	{
-		printf("increment sur les x\n");
+		// printf("increment sur les x\n");
 		cumul = dx / 2;
 		i = 1;
 		while (i < dx)
@@ -56,7 +56,7 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 	}
 	else
 	{
-		printf("increment sur les y\n");
+		// printf("increment sur les y\n");
 		cumul = dy / 2;
 		i = 1;
 		while (i < dy)
