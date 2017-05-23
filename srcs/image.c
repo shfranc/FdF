@@ -6,11 +6,40 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/22 18:55:39 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/23 16:14:01 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+#include <stdio.h>
+
+static void	ft_isometric_projection(t_map *map, t_draw *draw)
+{
+	t_map *temp_row;
+	t_map *temp_col;
+	int	temp_x;
+	int	temp_y;
+
+	(void)draw;
+
+	temp_row = map;
+	while (temp_row)
+	{
+		temp_col = temp_row;
+		while (temp_col)
+		{
+			temp_x = temp_col->x;
+			temp_y = temp_col->y;
+			temp_col->x = temp_col->x;
+			temp_col->y = temp_col->y;
+			printf("x: %d\ty: %d\n", temp_col->x, temp_col->y);
+			// temp_col->z = 0;
+			temp_col = temp_col->next;
+		}
+		temp_row = temp_row->down;
+	}
+}
 
 static void	ft_scale_up(t_map *map, int gap)
 {
@@ -30,17 +59,17 @@ static void	ft_scale_up(t_map *map, int gap)
 		}
 		temp_row = temp_row->down;
 	}
-	ft_fdf_display_matrix(map);
+	// ft_fdf_display_matrix(map);
 }
 
 static void	ft_draw_graph(char *ram, int width, t_map *map)
 {
-	int i;
+	// int i;
 	t_map *temp_row;
 	t_map *temp_col;
 
 	temp_row = map;
-	i = 0;
+	// i = 0;
 	while (temp_row)
 	{
 		temp_col = temp_row;
@@ -52,13 +81,13 @@ static void	ft_draw_graph(char *ram, int width, t_map *map)
 				ft_drawline(ram, width, temp_col->x, temp_col->y, temp_col->down->x, temp_col->down->y, 0xFFFF); // cyan
 			temp_col = temp_col->next;
 			// ft_putnbr_endl(i);
-			i++;
+			// i++;
 		}
 		temp_row = temp_row->down;
 	}
 }
 
-void	*ft_fill_image(void *mlx, t_map *map)
+void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw)
 {
 	void *img;
 	char *ram;
@@ -68,11 +97,18 @@ void	*ft_fill_image(void *mlx, t_map *map)
 
 	(void)map;
 
-	img = mlx_new_image(mlx, 800, 800);
+	img = mlx_new_image(mlx, draw->img_width, draw->img_height);
 	ram = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	ft_putnbr_endl(size_line);
+
+
+	ft_isometric_projection(map, draw);
+
+	ft_scale_up(map, draw->gap);
+
 	
-	ft_scale_up(map, 40);
-	ft_draw_graph(ram, 800, map);
+
+	ft_draw_graph(ram, draw->img_width, map);
 	
 	return (img);
 }

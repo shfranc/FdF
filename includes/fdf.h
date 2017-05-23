@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/22 18:39:36 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/23 15:25:05 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include "mlx.h"
 # include "libft.h"
 # include <fcntl.h> // open
-# include <errno.h>
+# include <math.h>
 
 # include <stdlib.h> // pour exit, abs
 
 # include <stdio.h> // pour printf
+
+# define	MARGIN 75
+# define	MAXWIDTH 2560 - MARGIN
+# define	MAXHEIGHT 1315 -  MARGIN
+
 
 typedef struct	s_pix
 {
@@ -40,8 +45,20 @@ typedef struct s_map
 	struct s_map	*down;
 }				t_map;
 
-t_map	*ft_get_data(char *path);
-void	*ft_fill_image(void *mlx, t_map *map);
+typedef struct	s_draw
+{
+	int			nb_row;
+	int			nb_col;
+	int			gap;
+	int			img_width;
+	int			img_height;
+	int			win_width;
+	int			win_height;
+}				t_draw;
+
+t_map	*ft_get_data(char *path, t_draw *draw);
+
+void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
 
 void	ft_putpixel(char *ram, int i, int code);
 

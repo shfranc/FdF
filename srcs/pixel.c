@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:49:43 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/22 17:29:00 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/23 16:53:03 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,6 @@ void	ft_putpixel(char *ram, int i, int code) // inclure un mode pour l'endian
 	pix->red = color[2];
 	pix->transp = 0;
 }
+
+// bloquer si le dessin sort du cadre de l'image en x ou en y.
+// avoir ici la taille img_width et img_heigth
