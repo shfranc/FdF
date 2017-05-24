@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 16:14:01 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 19:07:05 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 #include <stdio.h>
 
-static void	ft_isometric_projection(t_map *map, t_draw *draw)
+void	ft_isometric_projection(t_map *map, t_draw *draw)
 {
 	t_map *temp_row;
 	t_map *temp_col;
-	int	temp_x;
-	int	temp_y;
+
 
 	(void)draw;
 
@@ -29,32 +28,33 @@ static void	ft_isometric_projection(t_map *map, t_draw *draw)
 		temp_col = temp_row;
 		while (temp_col)
 		{
-			temp_x = temp_col->x;
-			temp_y = temp_col->y;
-			temp_col->x = temp_col->x;
-			temp_col->y = temp_col->y;
-			printf("x: %d\ty: %d\n", temp_col->x, temp_col->y);
-			// temp_col->z = 0;
+			temp_col->iso_x = 70 * (temp_col->x - temp_col->y) / 100;
+			temp_col->iso_y = ((41 * (temp_col->x + temp_col->y) / 100) - (173 * temp_col->z) / 100);
+			temp_col->x = temp_col->iso_x;
+			temp_col->y = temp_col->iso_y;
+			// printf("x: %d\ty: %d\tz: %d\n", temp_col->x, temp_col->y, temp_col->z);
 			temp_col = temp_col->next;
 		}
 		temp_row = temp_row->down;
 	}
 }
 
-static void	ft_scale_up(t_map *map, int gap)
+void	ft_scale_up(t_map *map, int gap)
 {
 	t_map *temp_row;
 	t_map *temp_col;
 
+	(void)gap;
+	
 	temp_row = map;
 	while (temp_row)
 	{
 		temp_col = temp_row;
 		while (temp_col)
 		{
-			temp_col->x *= gap;
-			temp_col->y *= gap;
-			temp_col->z *= gap;
+			temp_col->x = temp_col->x;
+			temp_col->y = temp_col->x;
+			// temp_col->z *= gap; // hauteur non homogene
 			temp_col = temp_col->next;
 		}
 		temp_row = temp_row->down;
@@ -62,26 +62,41 @@ static void	ft_scale_up(t_map *map, int gap)
 	// ft_fdf_display_matrix(map);
 }
 
-static void	ft_draw_graph(char *ram, int width, t_map *map)
+void	ft_center_origin(t_map *map, t_draw *draw)
 {
-	// int i;
 	t_map *temp_row;
 	t_map *temp_col;
 
 	temp_row = map;
-	// i = 0;
+	while (temp_row)
+	{
+		temp_col = temp_row;
+		while (temp_col)
+		{
+			temp_col->x += (draw->img_width / 2);
+			temp_col->y += (draw->img_height / 3);
+			temp_col = temp_col->next;
+		}
+		temp_row = temp_row->down;
+	}
+}
+
+static void	ft_draw_graph(char *ram, t_draw *draw, t_map *map)
+{
+	t_map *temp_row;
+	t_map *temp_col;
+
+	temp_row = map;
 	while (temp_row)
 	{
 		temp_col = temp_row;
 		while (temp_col)
 		{
 			if (temp_col->next)
-				ft_drawline(ram, width, temp_col->x, temp_col->y, temp_col->next->x, temp_col->next->y, 0xFFFF00); // jaune
+				ft_drawline(ram, draw, temp_col, temp_col->next);
 			if (temp_col->down)
-				ft_drawline(ram, width, temp_col->x, temp_col->y, temp_col->down->x, temp_col->down->y, 0xFFFF); // cyan
+				ft_drawline(ram, draw, temp_col, temp_col->down);
 			temp_col = temp_col->next;
-			// ft_putnbr_endl(i);
-			// i++;
 		}
 		temp_row = temp_row->down;
 	}
@@ -99,20 +114,15 @@ void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw)
 
 	img = mlx_new_image(mlx, draw->img_width, draw->img_height);
 	ram = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	ft_putnbr_endl(size_line);
-
-
-	ft_isometric_projection(map, draw);
-
-	ft_scale_up(map, draw->gap);
-
 	
 
-	ft_draw_graph(ram, draw->img_width, map);
+	// ft_scale_up(map, draw->scale);
+	
+	// ft_isometric_projection(map, draw);
+	
+	// ft_center_origin(map, draw);	
+
+	ft_draw_graph(ram, draw, map);
 	
 	return (img);
 }
-
-
-
-

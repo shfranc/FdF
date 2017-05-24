@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 15:20:52 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 19:04:40 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_init_draw(t_draw *draw)
 {
 	draw->nb_row = 0;
 	draw->nb_col = 0;
-	draw->gap = 0;
+	draw->scale = 0;
 	draw->img_width = 0;
 	draw->img_height = 0;
 	draw->win_width = 0;
@@ -25,13 +25,14 @@ void	ft_init_draw(t_draw *draw)
 
 void	ft_init_dim(t_draw *draw)
 {
-	draw->gap = 25;
-	while (draw->gap * 2 * draw->nb_col > MAXWIDTH)
-		draw->gap--;
-	draw->img_width = 2 * draw->nb_col * draw->gap;
-	draw->img_height = draw->nb_row * draw->gap;
-	draw->win_width = draw->img_width + MARGIN;
-	draw->win_height = draw->img_height + MARGIN;
+
+	draw->scale = 30;
+	while (draw->scale * (draw->nb_col + draw->nb_row) > MAXWIDTH)
+		draw->scale--;
+	draw->img_width = MAXWIDTH / 2;
+	draw->img_height = MAXHEIGHT;
+	draw->win_width = draw->img_width;
+	draw->win_height = draw->img_height;
 }
 
 int		main(int ac, char **av)
@@ -46,16 +47,22 @@ int		main(int ac, char **av)
 		ft_exit("usage: ./fdf <filename>", 1);
 	ft_init_draw(&draw);
 	map = ft_get_data(av[1], &draw);
-
+	
+	ft_putnbr_endl(MAXWIDTH);
+	ft_putnbr_endl(MAXHEIGHT);
 	ft_putnbr_endl(draw.nb_col);
 	ft_putnbr_endl(draw.nb_row);
 	ft_init_dim(&draw);
-	ft_putnbr_endl(draw.gap);
 	ft_putnbr_endl(draw.img_width);
 	ft_putnbr_endl(draw.img_height);
 	ft_putnbr_endl(draw.win_width);
 	ft_putnbr_endl(draw.win_height);
 
+	
+	
+	ft_isometric_projection(map, &draw);
+	ft_scale_up(map, draw.scale);
+	ft_center_origin(map, &draw);
 
 	mlx = mlx_init();
 	// win = mlx_new_window(mlx, 2560, 1315, "fdf");
@@ -63,7 +70,7 @@ int		main(int ac, char **av)
 
 	img = ft_fill_image(mlx, map, &draw);
 
-	mlx_put_image_to_window(mlx, win, img, MARGIN / 2, MARGIN / 2);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
 	mlx_key_hook(win, ft_escape, 0);
 	mlx_loop(mlx);
 	return (0);

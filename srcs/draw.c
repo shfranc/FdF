@@ -6,13 +6,13 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/22 18:19:52 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 17:12:38 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color)
+void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 {
 	int x;
 	int y;
@@ -23,18 +23,18 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 	int yinc;
 	int i;
 
-	x = x1;
-	y = y1;
-	dx = x2 - x1;
-	dy = y2 - y1;
+	x = pt_x->x;
+	y = pt_x->y;
+	dx = pt_y->x - pt_x->x;
+	dy = pt_y->y - pt_x->y;
 	xinc = (dx > 0) ? 1 : -1;
 	yinc = (dy > 0) ? 1 : -1;
 	// printf("xinc: %d\tyinc: %d\n", xinc, yinc);
 
 	dx = abs(dx);
 	dy = abs(dy);
-
-	ft_putpixel(ram, y * width + x , color);
+	if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+		ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 
 	if (dx > dy)
 	{
@@ -50,7 +50,8 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 				cumul -= dx;
 				y += yinc;
 			}
-			ft_putpixel(ram, y * width + x , color);
+			if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 			i++;
 		}
 	}
@@ -68,11 +69,74 @@ void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color
 				cumul -= dy;
 				x += xinc;
 			}
-			ft_putpixel(ram, y * width + x , color);
+			if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 			i++;
 		}
 	}
 }
+
+// void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color)
+// {
+// 	int x;
+// 	int y;
+// 	int	dx;
+// 	int	dy;
+// 	int cumul;
+// 	int xinc;
+// 	int yinc;
+// 	int i;
+
+// 	x = x1;
+// 	y = y1;
+// 	dx = x2 - x1;
+// 	dy = y2 - y1;
+// 	xinc = (dx > 0) ? 1 : -1;
+// 	yinc = (dy > 0) ? 1 : -1;
+// 	// printf("xinc: %d\tyinc: %d\n", xinc, yinc);
+
+// 	dx = abs(dx);
+// 	dy = abs(dy);
+
+// 	ft_putpixel(ram, y * width + x , color);
+
+// 	if (dx > dy)
+// 	{
+// 		// printf("increment sur les x\n");
+// 		cumul = dx / 2;
+// 		i = 1;
+// 		while (i < dx)
+// 		{
+// 			x += xinc;
+// 			cumul += dy;
+// 			if (cumul >= dx)
+// 			{
+// 				cumul -= dx;
+// 				y += yinc;
+// 			}
+// 			ft_putpixel(ram, y * width + x , color);
+// 			i++;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		// printf("increment sur les y\n");
+// 		cumul = dy / 2;
+// 		i = 1;
+// 		while (i < dy)
+// 		{
+// 			y += yinc;
+// 			cumul += dx;
+// 			if (cumul >= dy)
+// 			{
+// 				cumul -= dy;
+// 				x += xinc;
+// 			}
+// 			ft_putpixel(ram, y * width + x , color);
+// 			i++;
+// 		}
+// 	}
+// }
 
 /*
 ** Test avec equation cartesienne

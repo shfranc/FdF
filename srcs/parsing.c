@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 10:33:01 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 12:24:22 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 15:55:28 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_map	*ft_get_row(int row, char *line)
 	{
 		temp = ft_strsplit(tab[i], ',');
 		if (ft_tablen(temp) == 1)
-			elem = ft_fdf_listnew(i, row, ft_atoi(temp[0]), 0);
+			elem = ft_fdf_listnew(i, row, ft_atoi(temp[0]), 0xFFFFFF);
 		else
 			elem = ft_fdf_listnew(i, row, ft_atoi(temp[0]), 0xFFFF); // faire un convbase de char base 16 a 10 (atoi_base ?)...
 		ft_fdf_lstaddlast(&head, elem);

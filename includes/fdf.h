@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 15:25:05 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 17:42:24 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 # include <stdio.h> // pour printf
 
-# define	MARGIN 75
-# define	MAXWIDTH 2560 - MARGIN
-# define	MAXHEIGHT 1315 -  MARGIN
+# define	MARGIN 50
+# define	MAXWIDTH (2560 - MARGIN)
+# define	MAXHEIGHT (1315 -  MARGIN)
 
 
 typedef struct	s_pix
@@ -41,6 +41,8 @@ typedef struct s_map
 	int				y;
 	int				z;
 	int				color;
+	float			iso_x;
+	float			iso_y;
 	struct s_map	*next;
 	struct s_map	*down;
 }				t_map;
@@ -49,7 +51,7 @@ typedef struct	s_draw
 {
 	int			nb_row;
 	int			nb_col;
-	int			gap;
+	int			scale;
 	int			img_width;
 	int			img_height;
 	int			win_width;
@@ -58,11 +60,17 @@ typedef struct	s_draw
 
 t_map	*ft_get_data(char *path, t_draw *draw);
 
+
+void	ft_scale_up(t_map *map, int gap);
+void	ft_isometric_projection(t_map *map, t_draw *draw);
+void	ft_center_origin(t_map *map, t_draw *draw);
+
 void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
 
 void	ft_putpixel(char *ram, int i, int code);
 
-void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color);
+// void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color);
+void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
 
 int		ft_escape(int keycode, void *param);
 
