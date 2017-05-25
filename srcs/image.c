@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 16:45:16 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 21:49:28 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_isometric_projection(t_map *map, t_draw *draw)
 		while (temp_col)
 		{
 			temp_col->iso_x = 70 * (temp_col->x - temp_col->y) / 100;
-			temp_col->iso_y = (82 * temp_col->z) / 100 - (41 * (temp_col->x + temp_col->y) / 100);
+			temp_col->iso_y = (82 * temp_col->z) / 2000 - (41 * (temp_col->x + temp_col->y) / 100);
 			// if (temp_col->z > 0)
 			// 	temp_col->color = 0x0F00FF; // modifier la couleur en fonction de l'altitude
 			temp_col->x = temp_col->iso_x;
