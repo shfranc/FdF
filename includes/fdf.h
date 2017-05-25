@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 17:42:24 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 12:28:34 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ typedef struct	s_draw
 	int			nb_row;
 	int			nb_col;
 	int			scale;
+	int			xmin;
+	int			xmax;
+	int			ymin;
+	int			ymax;
+	int			zmin;
+	int			zmax;
+	int			floors;
 	int			img_width;
 	int			img_height;
 	int			win_width;

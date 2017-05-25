@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 19:07:05 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 12:24:38 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	ft_isometric_projection(t_map *map, t_draw *draw)
 		while (temp_col)
 		{
 			temp_col->iso_x = 70 * (temp_col->x - temp_col->y) / 100;
-			temp_col->iso_y = ((41 * (temp_col->x + temp_col->y) / 100) - (173 * temp_col->z) / 100);
+			temp_col->iso_y = ((41 * (temp_col->x + temp_col->y) / 100) - (173 * temp_col->z) / 100 * 1/20);
+			// if (temp_col->z > 0)
+			// 	temp_col->color = 0x0F00FF; // modifier la couleur en fonction de l'altitude
 			temp_col->x = temp_col->iso_x;
 			temp_col->y = temp_col->iso_y;
 			// printf("x: %d\ty: %d\tz: %d\n", temp_col->x, temp_col->y, temp_col->z);
@@ -52,9 +54,9 @@ void	ft_scale_up(t_map *map, int gap)
 		temp_col = temp_row;
 		while (temp_col)
 		{
-			temp_col->x = temp_col->x;
-			temp_col->y = temp_col->x;
-			// temp_col->z *= gap; // hauteur non homogene
+			temp_col->x *= gap;
+			temp_col->y *= gap;
+			temp_col->z *= gap; // hauteur non homogene
 			temp_col = temp_col->next;
 		}
 		temp_row = temp_row->down;
@@ -73,7 +75,7 @@ void	ft_center_origin(t_map *map, t_draw *draw)
 		temp_col = temp_row;
 		while (temp_col)
 		{
-			temp_col->x += (draw->img_width / 2);
+			temp_col->x += (draw->img_width / 2) + 50;
 			temp_col->y += (draw->img_height / 3);
 			temp_col = temp_col->next;
 		}
