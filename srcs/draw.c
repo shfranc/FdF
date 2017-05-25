@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 17:12:38 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:12:48 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 
 	dx = abs(dx);
 	dy = abs(dy);
-	if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+	if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
 		ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 
 	if (dx > dy)
@@ -50,7 +50,7 @@ void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 				cumul -= dx;
 				y += yinc;
 			}
-			if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+			if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
 				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 			i++;
 		}
@@ -69,7 +69,7 @@ void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 				cumul -= dy;
 				x += xinc;
 			}
-			if (x >= 0 && x < draw->img_width && y >= 0 && y < draw->img_height)
+			if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
 				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
 			i++;
 		}

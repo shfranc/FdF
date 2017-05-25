@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 11:58:44 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/22 18:51:24 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 15:27:58 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_fdf_display_matrix(t_map *map) // debug mais a conserver
 		temp_col = temp_row;
 		while (temp_col)
 		{
-			ft_putnbr(temp_col->x);
+			ft_putnbr(temp_col->z);
 			if (temp_col->next)
 				write(1, " ", 1);
 			else

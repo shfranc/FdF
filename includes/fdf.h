@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 12:28:34 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:07:02 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,8 @@ typedef struct	s_draw
 	int			xmax;
 	int			ymin;
 	int			ymax;
-	int			zmin;
-	int			zmax;
-	int			floors;
 	int			img_width;
 	int			img_height;
-	int			win_width;
-	int			win_height;
 }				t_draw;
 
 t_map	*ft_get_data(char *path, t_draw *draw);
