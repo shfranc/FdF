@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:21:28 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 21:38:18 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 16:46:43 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,28 @@
 int		ft_atoi_base(char *str, int base)
 {
 	static char	tab[16] = "0123456789ABCDEF";
-	char	*check;
-	long int	nb;
-	int			sign;
+	char 	*copy;
+	char	*tmp;
+	long	nb;
+	int		sign;
 
 	if (base < 2 || base > 16)
 		return (0);
-
+	copy = ft_strmap(str, &ft_upcase);
 	nb = 0;
 	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
+	tmp = copy;
+	while (*tmp == ' ' || (*tmp >= 9 && *tmp <= 13))
+		tmp++;
+	if (*tmp == '-')
 		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-
-	while (*str && (check = ft_strchr(tab, *str)) && *check && check - tab < base)
+	if (*tmp == '+' || *tmp == '-')
+		tmp++;
+	while (*tmp && ft_strchr(tab, *tmp) && ft_strchr(tab, *tmp) - tab < base)
 	{
-		nb = nb * base + check - tab;
-		str++;
+		nb = nb * base + ft_strchr(tab, *tmp) - tab;
+		tmp++;
 	}
+	free(copy);
 	return ((int)(nb * sign));
 }

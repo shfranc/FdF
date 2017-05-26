@@ -6,14 +6,15 @@
 #    By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/13 13:03:38 by sfranc            #+#    #+#              #
-#    Updated: 2017/05/22 17:17:34 by sfranc           ###   ########.fr        #
+#    Updated: 2017/05/26 17:49:26 by sfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 SRCS_PATH = srcs
 OBJS_PATH = objs
-SRCS = 	$(addprefix $(SRCS_PATH)/, main.c \
+SRCS = 	$(addprefix $(SRCS_PATH)/, init.c \
+		main.c \
 		parsing.c \
 		image.c \
 		pixel.c \

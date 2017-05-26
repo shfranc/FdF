@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 15:37:22 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 21:44:25 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 16:35:45 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_isspace(int c);
+char			ft_upcase(char c);
 
 /*
 ** Fonctions sur des chaines de caracteres

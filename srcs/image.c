@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 21:49:28 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 17:59:26 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_isometric_projection(t_map *map, t_draw *draw)
 		while (temp_col)
 		{
 			temp_col->iso_x = 70 * (temp_col->x - temp_col->y) / 100;
-			temp_col->iso_y = (82 * temp_col->z) / 2000 - (41 * (temp_col->x + temp_col->y) / 100);
+			temp_col->iso_y = ((82 * temp_col->z) / 100 - (41 * (temp_col->x + temp_col->y) / 100));
 			// if (temp_col->z > 0)
 			// 	temp_col->color = 0x0F00FF; // modifier la couleur en fonction de l'altitude
 			temp_col->x = temp_col->iso_x;
@@ -112,19 +112,8 @@ void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw)
 	int size_line;
 	int endian;
 
-	(void)map;
-
 	img = mlx_new_image(mlx, draw->img_width, draw->img_height);
 	ram = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	
-
-	// ft_scale_up(map, draw->scale);
-	
-	// ft_isometric_projection(map, draw);
-	
-	// ft_center_origin(map, draw);	
-
 	ft_draw_graph(ram, draw, map);
-	
 	return (img);
 }
