@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 15:37:22 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 16:35:45 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:42:50 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int				*ft_range(int min, int max);
 int				ft_intsize(int n);
 void			sort_int_tab(int *tab, unsigned int size);
 int				ull_len(unsigned long long nb);
+int				ft_abs(int nb);
 
 /*
 ** Gestion d'erreur

@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:37 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 12:05:37 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:47:21 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_init_draw(t_draw *draw)
 	draw->height = 100;
 	draw->img_width = 0;
 	draw->img_height = 0;
-	draw->endian = 0;
 }
 
 void	ft_init_scale(t_draw *draw)
@@ -58,8 +57,8 @@ void	ft_fetch_dim(t_map *map, t_draw *draw)
 
 void	ft_init_dim(t_draw *draw)
 {
-	draw->img_width = (abs(draw->xmin) + abs(draw->xmax)) < MAXWIDTH ?\
-	(abs(draw->xmin) + abs(draw->xmax)) + MARGIN : MAXWIDTH;
-	draw->img_height = (abs(draw->ymin) + abs(draw->ymax)) < MAXHEIGHT ?\
-	(abs(draw->ymin) + abs(draw->ymax)) + MARGIN : MAXHEIGHT;
+	draw->img_width = (ft_abs(draw->xmin) + ft_abs(draw->xmax)) < MAXWIDTH ?\
+	(ft_abs(draw->xmin) + ft_abs(draw->xmax)) + MARGIN : MAXWIDTH;
+	draw->img_height = (ft_abs(draw->ymin) + ft_abs(draw->ymax)) < MAXHEIGHT ?\
+	(ft_abs(draw->ymin) + ft_abs(draw->ymax)) + MARGIN : MAXHEIGHT;
 }

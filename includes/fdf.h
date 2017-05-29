@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:20:02 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:21:23 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct	s_draw
 	int				height;
 	int				img_width;
 	int				img_height;
-	int				endian;
 	int				start_x;
 	int				start_y;
 	int				dx;

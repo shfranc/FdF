@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:19:00 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:46:47 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void		ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 	draw->dy = pt_y->iso_y - pt_x->iso_y;
 	draw->xinc = (draw->dx > 0) ? 1 : -1;
 	draw->yinc = (draw->dy > 0) ? 1 : -1;
-	draw->dx = (draw->dx > 0) ? draw->dx : -draw->dx;
-	draw->dy = (draw->dy > 0) ? draw->dy : -draw->dy;
+	draw->dx = ft_abs(draw->dx);
+	draw->dy = ft_abs(draw->dy);
 	if (draw->start_x >= 0\
 		&& draw->start_x <= draw->img_width\
 		&& draw->start_y >= 0\

@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 12:10:53 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:21:19 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void		*ft_fill_image(void *mlx, t_map *map, t_draw *draw)
 
 	img = mlx_new_image(mlx, draw->img_width, draw->img_height);
 	ram = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	draw->endian = endian;
 	ft_draw_graph(ram, draw, map);
 	return (img);
 }

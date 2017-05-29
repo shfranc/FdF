@@ -6,7 +6,7 @@
 #    By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 16:47:23 by sfranc            #+#    #+#              #
-#    Updated: 2017/05/26 16:56:58 by sfranc           ###   ########.fr        #
+#    Updated: 2017/05/29 17:43:35 by sfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = libft.a
 PATH_SRCS = srcs
 PATH_OBJS = objs
 INCLUDES = includes
-SRCS = 	$(addprefix $(PATH_SRCS)/, ft_addtotab.c \
+SRCS = 	$(addprefix $(PATH_SRCS)/, ft_abs.c \
+		ft_addtotab.c \
 		ft_atoi.c \
 		ft_atoi_base.c \
 		ft_bzero.c \
