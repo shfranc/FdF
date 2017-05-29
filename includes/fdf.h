@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 14:21:39 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:20:02 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,12 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
+# define PIX_BLUE 0xFF
+# define PIX_GREEN 0xFF00
+# define PIX_RED 0xFF0000
 # define MARGIN 50
 # define MAXWIDTH (2560 - MARGIN)
 # define MAXHEIGHT (1315 - MARGIN)
-
-typedef struct	s_pix
-{
-	unsigned char	blue;
-	unsigned char	green;
-	unsigned char	red;
-	unsigned char	transp;
-}				t_pix;
 
 typedef struct	s_map
 {
@@ -89,7 +84,7 @@ void			ft_isometric_projection(t_map *map, t_draw *draw);
 void			ft_center_origin(t_map *map, t_draw *draw);
 void			*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
 void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
-void			ft_putpixel(char *ram, int i, int code, int endian);
+void			ft_putpixel(char *ram, int i, int code);
 
 /*
 ** Events handler

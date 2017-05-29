@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 14:05:55 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:19:00 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_xaxis_draw(char *ram, t_draw *draw, int color)
 			&& draw->start_y >= 0\
 			&& draw->start_y <= draw->img_height)
 			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
-				color, draw->endian);
+				color);
 		i++;
 	}
 }
@@ -59,7 +59,7 @@ static void	ft_yaxis_draw(char *ram, t_draw *draw, int color)
 			&& draw->start_y >= 0\
 			&& draw->start_y <= draw->img_height)
 			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
-				color, draw->endian);
+				color);
 		i++;
 	}
 }
@@ -79,7 +79,7 @@ void		ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 		&& draw->start_y >= 0\
 		&& draw->start_y <= draw->img_height)
 		ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
-			pt_x->color, draw->endian);
+			pt_x->color);
 	if (draw->dx > draw->dy)
 		ft_xaxis_draw(ram, draw, pt_x->color);
 	else
