@@ -6,243 +6,82 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 17:59:32 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 14:05:55 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
+static void	ft_xaxis_draw(char *ram, t_draw *draw, int color)
 {
-	int x;
-	int y;
-	int	dx;
-	int	dy;
-	int cumul;
-	int xinc;
-	int yinc;
-	int i;
+	int	cumul;
+	int	i;
 
-	x = pt_x->x;
-	y = pt_x->y;
-	dx = pt_y->x - pt_x->x;
-	dy = pt_y->y - pt_x->y;
-	xinc = (dx > 0) ? 1 : -1;
-	yinc = (dy > 0) ? 1 : -1;
-	// printf("xinc: %d\tyinc: %d\n", xinc, yinc);
-
-	dx = abs(dx);
-	dy = abs(dy);
-	if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
-		ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
-
-	if (dx > dy)
+	cumul = draw->dx / 2;
+	i = 1;
+	while (i < draw->dx)
 	{
-		// printf("increment sur les x\n");
-		cumul = dx / 2;
-		i = 1;
-		while (i < dx)
+		draw->start_x += draw->xinc;
+		cumul += draw->dy;
+		if (cumul >= draw->dx)
 		{
-			x += xinc;
-			cumul += dy;
-			if (cumul >= dx)
-			{
-				cumul -= dx;
-				y += yinc;
-			}
-			if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
-				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
-			i++;
+			cumul -= draw->dx;
+			draw->start_y += draw->yinc;
 		}
-	}
-	else
-	{
-		// printf("increment sur les y\n");
-		cumul = dy / 2;
-		i = 1;
-		while (i < dy)
-		{
-			y += yinc;
-			cumul += dx;
-			if (cumul >= dy)
-			{
-				cumul -= dy;
-				x += xinc;
-			}
-			if (x >= 0 && x <= draw->img_width && y >= 0 && y <= draw->img_height)
-				ft_putpixel(ram, y * draw->img_width + x , pt_x->color);
-			i++;
-		}
+		if (draw->start_x >= 0\
+			&& draw->start_x <= draw->img_width\
+			&& draw->start_y >= 0\
+			&& draw->start_y <= draw->img_height)
+			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
+				color, draw->endian);
+		i++;
 	}
 }
 
-// void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color)
-// {
-// 	int x;
-// 	int y;
-// 	int	dx;
-// 	int	dy;
-// 	int cumul;
-// 	int xinc;
-// 	int yinc;
-// 	int i;
+static void	ft_yaxis_draw(char *ram, t_draw *draw, int color)
+{
+	int	cumul;
+	int	i;
 
-// 	x = x1;
-// 	y = y1;
-// 	dx = x2 - x1;
-// 	dy = y2 - y1;
-// 	xinc = (dx > 0) ? 1 : -1;
-// 	yinc = (dy > 0) ? 1 : -1;
-// 	// printf("xinc: %d\tyinc: %d\n", xinc, yinc);
+	cumul = draw->dy / 2;
+	i = 1;
+	while (i < draw->dy)
+	{
+		draw->start_y += draw->yinc;
+		cumul += draw->dx;
+		if (cumul >= draw->dy)
+		{
+			cumul -= draw->dy;
+			draw->start_x += draw->xinc;
+		}
+		if (draw->start_x >= 0\
+			&& draw->start_x <= draw->img_width\
+			&& draw->start_y >= 0\
+			&& draw->start_y <= draw->img_height)
+			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
+				color, draw->endian);
+		i++;
+	}
+}
 
-// 	dx = abs(dx);
-// 	dy = abs(dy);
-
-// 	ft_putpixel(ram, y * width + x , color);
-
-// 	if (dx > dy)
-// 	{
-// 		// printf("increment sur les x\n");
-// 		cumul = dx / 2;
-// 		i = 1;
-// 		while (i < dx)
-// 		{
-// 			x += xinc;
-// 			cumul += dy;
-// 			if (cumul >= dx)
-// 			{
-// 				cumul -= dx;
-// 				y += yinc;
-// 			}
-// 			ft_putpixel(ram, y * width + x , color);
-// 			i++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		// printf("increment sur les y\n");
-// 		cumul = dy / 2;
-// 		i = 1;
-// 		while (i < dy)
-// 		{
-// 			y += yinc;
-// 			cumul += dx;
-// 			if (cumul >= dy)
-// 			{
-// 				cumul -= dy;
-// 				x += xinc;
-// 			}
-// 			ft_putpixel(ram, y * width + x , color);
-// 			i++;
-// 		}
-// 	}
-// }
-
-/*
-** Test avec equation cartesienne
-*/
-	// int x;
-	// int y;
-	// double a;
-	// double b;
-
-	// a = (double)(dy / dx);
-	// b =	y1 - (a * x1);
-	// x = x1;
-	// while (x1 <= x2)
-	// {
-	// 	y = (int)(a * x + b);
-	// 	ft_putpixel(ram, y * width + x , 0xFFFFFF);
-	// 	x++;
-	// }
-
-/*
-** Bresenham sur 1/4 du repere
-*/
-	// int x;
-	// int y;
-	// int	dx;
-	// int	dy;
-	// int cumul;
-
-	// x = x1;
-	// y = y1;
-	// dx = x2 - x1;
-	// dy = y2 - y1;
-	// ft_putpixel(ram, y * width + x , 0xFFFFFF);
-
-	// cumul = dx / 2;
-	// printf("dy :%d\tdx :%d\n", dy, dx);
-	// x++;
-	// while (x < x2)
-	// {
-	// 	cumul += dy;
-	// 	printf("dy :%d\tcumul :%d\n", dy, cumul);
-	// 	if (cumul >= dx)
-	// 	{
-	// 		cumul -= dx;
-	// 		printf("dx :%d\tcumul :%d\n", dx, cumul);
-	// 		y++;
-	// 	}
-	// 	printf("x :%d\ty :%d\n", x, y);
-	// 	ft_putpixel(ram, y * width + x , 0xFFFFFF);
-	// 	x++;
-	// }
-
-/*
-** Bresenham super compact
-*/
-	// int x;
-	// int y;
-	// int	dx;
-	// int	dy;
-	// int cumul;
-	// int xinc;
-	// int yinc;
-	// int i;
-
-	// x = x1;
-	// y = y1;
-	// dx = x2 - x1;
-	// dy = y2 - y1;
-	// xinc = (dx > 0) ? 1 : -1;
-	// yinc = (dy > 0) ? 1 : -1;
-	// dx = abs(dx);
-	// dy = abs(dy);
-
-	// ft_putpixel(ram, y * width + x , 0xFFFFFF);
-
-	// if (dx > dy)
-	// {
-	// 	cumul = dx / 2;
-	// 	i = 1;
-	// 	while (i < dx)
-	// 	{
-	// 		x += xinc;
-	// 		cumul += dy;
-	// 		if (cumul >= dx)
-	// 		{
-	// 			cumul -= dx;
-	// 			y += yinc;
-	// 		}
-	// 		ft_putpixel(ram, y * width + x , 0xFFFFFF);
-	// 		i++;
-	// 	}
-	// }
-	// else
-	// {
-	// 	cumul = dy / 2;
-	// 	i = 1;
-	// 	while (i < dy)
-	// 	{
-	// 		y += yinc;
-	// 		cumul += dx;
-	// 		if (cumul >= dy)
-	// 		{
-	// 			cumul -= dy;
-	// 			x += xinc;
-	// 		}
-	// 		ft_putpixel(ram, y * width + x , 0xFFFFFF);
-	// 		i++;
-	// 	}
-	// }
+void		ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
+{
+	draw->start_x = pt_x->iso_x;
+	draw->start_y = pt_x->iso_y;
+	draw->dx = pt_y->iso_x - pt_x->iso_x;
+	draw->dy = pt_y->iso_y - pt_x->iso_y;
+	draw->xinc = (draw->dx > 0) ? 1 : -1;
+	draw->yinc = (draw->dy > 0) ? 1 : -1;
+	draw->dx = (draw->dx > 0) ? draw->dx : -draw->dx;
+	draw->dy = (draw->dy > 0) ? draw->dy : -draw->dy;
+	if (draw->start_x >= 0\
+		&& draw->start_x <= draw->img_width\
+		&& draw->start_y >= 0\
+		&& draw->start_y <= draw->img_height)
+		ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
+			pt_x->color, draw->endian);
+	if (draw->dx > draw->dy)
+		ft_xaxis_draw(ram, draw, pt_x->color);
+	else
+		ft_yaxis_draw(ram, draw, pt_x->color);
+}

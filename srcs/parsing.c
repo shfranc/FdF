@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 10:33:01 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 21:57:22 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 12:01:14 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int		ft_len_line(char *line)
 {
-	char **temp;
-	int len;
+	char	**temp;
+	int		len;
 
 	temp = ft_strsplit(line, ' ');
 	len = ft_tablen(temp);
@@ -52,12 +52,12 @@ static t_map	*ft_get_row(int row, char *line)
 	return (head);
 }
 
-t_map	*ft_get_data(char *path, t_draw *draw)
+t_map			*ft_get_data(char *path, t_draw *draw)
 {
-	t_map *map;
-	t_map *row;
-	char *line;
-	int fd;
+	t_map	*map;
+	t_map	*row;
+	char	*line;
+	int		fd;
 
 	map = NULL;
 	if ((fd = open(path, O_RDONLY)) == -1)
@@ -75,38 +75,5 @@ t_map	*ft_get_data(char *path, t_draw *draw)
 	}
 	if (!map)
 		ft_exit("No data found.", 1);
-	// ft_fdf_display_matrix(map);
 	return (map);
 }
-
-	// t_map *map;
-	// t_map *row;
-	// char *line;
-	// int fd;
-	// int	len;
-	// int nb_row;
-
-	// errno = 0;
-	// map = NULL;
-	// if ((fd = open(path, O_RDONLY)) == -1)
-	// 	ft_exit(ft_strjoin("No file ", path), 1);
-	// len = 0;
-	// nb_row = 0;
-	// while (get_next_line(fd, &line) == 1)
-	// {
-	// 	if (!len)
-	// 		len = ft_len_line(line);
-	// 	else if (len != ft_len_line(line))
-	// 		ft_exit("Found wrong line length. Exiting.", 1);
-	// 	row = ft_get_row(nb_row, line);
-	// 	ft_fdf_lstlinkdown(&map, row);
-	// 	nb_row++;
-	// 	ft_strdel(&line);
-	// }
-	// draw.nb_row = nb_row;
-	// draw.nb_col = len;
-	// if (!map)
-	// 	ft_exit("No data found.", 1);
-	// return (map);
-
-
