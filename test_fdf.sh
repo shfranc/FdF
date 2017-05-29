@@ -1,7 +1,7 @@
 echo "\033[01;32mGestion d'erreur\033[00m"
 ./fdf_staff
 ./fdf_staff nofile
-./fdf_staff maps/pylone.fdf
+./fdf_staff maps/wrong_map.fdf
 ./fdf_staff maps/map_vide.fdf
 ./fdf_staff maps/maps_onlyspaces.fdf
 
