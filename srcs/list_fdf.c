@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 11:58:44 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 15:27:58 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 14:07:49 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,48 +94,4 @@ void	ft_fdf_lstdel(t_map **head)
 		free(suppr);
 	}
 	*head = NULL;
-}
-
-void	ft_fdf_display_matrix(t_map *map) // debug mais a conserver
-{
-	t_map *temp_row;
-	t_map *temp_col;
-
-	temp_row = map;
-	while (temp_row)
-	{
-		temp_col = temp_row;
-		while (temp_col)
-		{
-			ft_putnbr(temp_col->z);
-			if (temp_col->next)
-				write(1, " ", 1);
-			else
-				write(1, "\n", 1);
-			temp_col = temp_col->next;
-		}
-		temp_row = temp_row->down;
-	}
-}
-
-void	ft_fdf_display_matrix_down(t_map *map) // debug mais a conserver
-{
-	t_map *temp_col;
-	t_map *temp_row;
-
-	temp_col = map;
-	while (temp_col)
-	{
-		temp_row = temp_col;
-		while (temp_row)
-		{
-			ft_putnbr(temp_row->z);
-			if (temp_row->down)
-				write(1, " ", 1);
-			else
-				write(1, "\n", 1);
-			temp_row = temp_row->down;
-		}
-		temp_col = temp_col->next;
-	}
 }

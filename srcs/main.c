@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 11:49:40 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 14:13:48 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,6 @@ int		main(int ac, char **av)
 	mlx_put_image_to_window(hold.mlx, hold.win, hold.img, 0, 0);
 	mlx_key_hook(hold.win, ft_events, param);
 	mlx_loop(hold.mlx);
+	ft_fdf_lstdel(&hold.map);
 	return (0);
 }
-
-	// if (ac != 2)
-	// 	ft_exit("usage: ./fdf <filename>", 1);
-	// ft_init_draw(&draw);
-	// map = ft_get_data(av[1], &draw);
-	// ft_init_scale(&draw);
-	// ft_scale_up(map, draw.scale);
-	// ft_isometric_projection(map, &draw);
-	// ft_fetch_dim(map, &draw);
-	// ft_init_dim(&draw);
-	// ft_center_origin(map, &draw);
-	// mlx = mlx_init();
-	// win = mlx_new_window(mlx, draw.img_width, draw.img_height, "fdf");
-	// img = ft_fill_image(mlx, map, &draw);
-	// mlx_put_image_to_window(mlx, win, img, 0, 0);
-	// mlx_key_hook(win, ft_escape, 0);
-	// mlx_loop(mlx);

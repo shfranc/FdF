@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 12:56:34 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 14:21:39 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 
 # include "mlx.h"
 # include "libft.h"
-# include <fcntl.h> // open
-# include <math.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
-# include <stdlib.h> // pour exit, abs
-
-# define	MARGIN 50
-# define	MAXWIDTH (2560 - MARGIN)
-# define	MAXHEIGHT (1315 -  MARGIN)
-
+# define MARGIN 50
+# define MAXWIDTH (2560 - MARGIN)
+# define MAXHEIGHT (1315 - MARGIN)
 
 typedef struct	s_pix
 {
@@ -33,7 +30,7 @@ typedef struct	s_pix
 	unsigned char	transp;
 }				t_pix;
 
-typedef struct s_map
+typedef struct	s_map
 {
 	int				x;
 	int				y;
@@ -66,45 +63,45 @@ typedef struct	s_draw
 	int				yinc;
 }				t_draw;
 
-typedef struct s_holder
+typedef struct	s_holder
 {
 	void			*mlx;
 	void			*win;
 	void			*img;
-	t_map 			*map;
-	t_draw 			draw;
+	t_map			*map;
+	t_draw			draw;
 }				t_holder;
 
-void	ft_init_draw(t_draw *draw);
-void	ft_init_scale(t_draw *draw);
+/*
+** Parsing & initialization
+*/
+t_map			*ft_get_data(char *path, t_draw *draw);
+void			ft_init_draw(t_draw *draw);
+void			ft_init_scale(t_draw *draw);
+void			ft_fetch_dim(t_map *map, t_draw *draw);
+void			ft_init_dim(t_draw *draw);
 
-void	ft_fetch_dim(t_map *map, t_draw *draw);
-void	ft_init_dim(t_draw *draw);
+/*
+** Projection and drawing
+*/
+void			ft_scale_up(t_map *map, int gap);
+void			ft_isometric_projection(t_map *map, t_draw *draw);
+void			ft_center_origin(t_map *map, t_draw *draw);
+void			*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
+void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
+void			ft_putpixel(char *ram, int i, int code, int endian);
 
-t_map	*ft_get_data(char *path, t_draw *draw);
-
-
-void	ft_scale_up(t_map *map, int gap);
-void	ft_isometric_projection(t_map *map, t_draw *draw);
-void	ft_center_origin(t_map *map, t_draw *draw);
-
-void	*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
-
-void	ft_putpixel(char *ram, int i, int code, int endian);
-
-// void	ft_drawline(char *ram, int width, int x1, int y1, int x2, int y2, int color);
-void	ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
-
-int		ft_events(int keycode, void *param);
+/*
+** Events handler
+*/
+int				ft_events(int keycode, void *param);
 
 /*
 ** fdf linked lists
 */
-t_map	*ft_fdf_listnew(int x, int y, int z, int color);
-void	ft_fdf_lstaddlast(t_map **head, t_map *new);
-void	ft_fdf_lstlinkdown(t_map **head, t_map *row);
-void	ft_fdf_lstdel(t_map **map);
-void	ft_fdf_display_matrix(t_map *map);
-void	ft_fdf_display_matrix_down(t_map *map);
+t_map			*ft_fdf_listnew(int x, int y, int z, int color);
+void			ft_fdf_lstaddlast(t_map **head, t_map *new);
+void			ft_fdf_lstlinkdown(t_map **head, t_map *row);
+void			ft_fdf_lstdel(t_map **map);
 
 #endif
