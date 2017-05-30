@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:21:23 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 11:08:36 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct	s_draw
 	int				xmax;
 	int				ymin;
 	int				ymax;
+	int				zmin;
+	int				zmax;
 	int				height;
 	int				img_width;
 	int				img_height;
@@ -70,6 +72,7 @@ typedef struct	s_holder
 ** Parsing & initialization
 */
 t_map			*ft_get_data(char *path, t_draw *draw);
+void			ft_fetch_height(t_map *map, t_draw *draw);
 void			ft_init_draw(t_draw *draw);
 void			ft_init_scale(t_draw *draw);
 void			ft_fetch_dim(t_map *map, t_draw *draw);

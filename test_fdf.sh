@@ -1,40 +1,41 @@
 echo "\033[01;32mGestion d'erreur\033[00m"
-./fdf_staff
-./fdf_staff nofile
-./fdf_staff maps/wrong_map.fdf
-./fdf_staff maps/map_vide.fdf
-./fdf_staff maps/maps_onlyspaces.fdf
+./fdf
+./fdf maps/plat.fdf maps/basictest.fdf
+./fdf nofile
+./fdf maps/wrong_map.fdf
+./fdf maps/map_vide.fdf
+./fdf maps/maps_onlyspaces.fdf
 
 echo "\033[01;32mTests basiques\033[00m"
-./fdf_staff maps/plat.fdf
-./fdf_staff maps/basictest.fdf
-./fdf_staff maps/pnp_flat.fdf
-./fdf_staff maps/42.fdf
-./fdf_staff maps/pentenegpos.fdf
+./fdf maps/plat.fdf
+./fdf maps/basictest.fdf
+./fdf maps/pnp_flat.fdf
+./fdf maps/42.fdf
+./fdf maps/pentenegpos.fdf
 
 echo "\033[01;32mTests moyens\033[00m"
-./fdf_staff maps/10-2.fdf
-./fdf_staff maps/50-4.fdf
-./fdf_staff maps/pyra.fdf
-./fdf_staff maps/elem.fdf
+./fdf maps/10-2.fdf
+./fdf maps/50-4.fdf
+./fdf maps/pyra.fdf
+./fdf maps/elem.fdf
 
 echo "\033[01;32mTests grande map\033[00m"
-./fdf_staff maps/100-6.fdf
-./fdf_staff maps/mars.fdf
+./fdf maps/100-6.fdf
+./fdf maps/mars.fdf
 
 echo "\033[01;32mTests altitude\033[00m"
-./fdf_staff maps/10-70.fdf
-./fdf_staff maps/20-60.fdf
-./fdf_staff maps/elem2.fdf
+./fdf maps/10-70.fdf
+./fdf maps/20-60.fdf
+./fdf maps/elem2.fdf
 
 echo "\033[01;32mTests couleurs\033[00m"
-./fdf_staff maps/pyramide.fdf
-./fdf_staff maps/elem-col.fdf
+./fdf maps/pyramide.fdf
+./fdf maps/elem-col.fdf
 
 echo "\033[01;32mTests couleurs et altitude\033[00m"
-./fdf_staff maps/t1.fdf
-./fdf_staff maps/t2.fdf
+./fdf maps/t1.fdf
+./fdf maps/t2.fdf
 
 echo "\033[01;32mTests fractales\033[00m"
-./fdf_staff maps/julia.fdf
-./fdf_staff maps/elem-fract.fdf
+./fdf maps/julia.fdf
+./fdf maps/elem-fract.fdf

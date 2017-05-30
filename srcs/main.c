@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 15:21:14 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 11:18:02 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main(int ac, char **av)
 	param = &hold;
 	ft_init_draw(&hold.draw);
 	hold.map = ft_get_data(av[1], &hold.draw);
+	ft_fetch_height(hold.map, &hold.draw);
 	ft_init_scale(&hold.draw);
 	ft_scale_up(hold.map, hold.draw.scale);
 	ft_isometric_projection(hold.map, &hold.draw);

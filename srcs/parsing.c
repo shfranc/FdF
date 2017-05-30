@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 10:33:01 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 12:01:14 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 11:57:35 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,28 @@ static t_map	*ft_get_row(int row, char *line)
 	}
 	ft_freetab(&tab);
 	return (head);
+}
+
+void			ft_fdf_display_matrix(t_map *map)
+{
+	t_map *temp_row;
+	t_map *temp_col;
+
+	temp_row = map;
+	while (temp_row)
+	{
+		temp_col = temp_row;
+		while (temp_col)
+		{
+			ft_putnbr(temp_col->z);
+			if (temp_col->next)
+				write(1, " ", 1);
+			else
+				write(1, "\n", 1);
+			temp_col = temp_col->next;
+		}
+		temp_row = temp_row->down;
+	}
 }
 
 t_map			*ft_get_data(char *path, t_draw *draw)
