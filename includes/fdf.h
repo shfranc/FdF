@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 11:08:36 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 18:30:35 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ typedef struct	s_map
 	int				y;
 	int				z;
 	int				color;
+	int				res_color;
 	int				iso_x;
 	int				iso_y;
+	int				res_x;
+	int				res_y;
 	struct s_map	*next;
 	struct s_map	*down;
 }				t_map;

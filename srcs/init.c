@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:37 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 12:20:08 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 18:06:15 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_fetch_height(t_map *map, t_draw *draw)
 	{
 		temp_col = temp_row;
 		while (temp_col)
-		{	
+		{
 			temp_col->z > draw->zmax ? draw->zmax = temp_col->z : 0;
 			temp_col->z < draw->zmin ? draw->zmin = temp_col->z : 0;
 			temp_col = temp_col->next;
@@ -53,7 +53,8 @@ void	ft_init_scale(t_draw *draw)
 {
 	draw->scale = 30;
 	while ((draw->scale * draw->nb_col > MAXWIDTH\
-		|| (draw->height + draw->nb_row )* draw->scale > MAXHEIGHT) && draw->scale > 3)
+		|| (draw->height + draw->nb_row) * draw->scale > MAXHEIGHT)\
+		&& draw->scale > 3)
 	{
 		draw->scale--;
 	}

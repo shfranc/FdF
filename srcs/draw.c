@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:46:47 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 12:39:27 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	ft_xaxis_draw(char *ram, t_draw *draw, int color)
 			draw->start_y += draw->yinc;
 		}
 		if (draw->start_x >= 0\
-			&& draw->start_x <= draw->img_width\
+			&& draw->start_x < draw->img_width\
 			&& draw->start_y >= 0\
-			&& draw->start_y <= draw->img_height)
+			&& draw->start_y < draw->img_height)
 			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
 				color);
 		i++;
@@ -55,9 +55,9 @@ static void	ft_yaxis_draw(char *ram, t_draw *draw, int color)
 			draw->start_x += draw->xinc;
 		}
 		if (draw->start_x >= 0\
-			&& draw->start_x <= draw->img_width\
+			&& draw->start_x < draw->img_width\
 			&& draw->start_y >= 0\
-			&& draw->start_y <= draw->img_height)
+			&& draw->start_y < draw->img_height)
 			ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
 				color);
 		i++;
@@ -75,9 +75,9 @@ void		ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 	draw->dx = ft_abs(draw->dx);
 	draw->dy = ft_abs(draw->dy);
 	if (draw->start_x >= 0\
-		&& draw->start_x <= draw->img_width\
+		&& draw->start_x < draw->img_width\
 		&& draw->start_y >= 0\
-		&& draw->start_y <= draw->img_height)
+		&& draw->start_y < draw->img_height)
 		ft_putpixel(ram, draw->start_y * draw->img_width + draw->start_x,\
 			pt_x->color);
 	if (draw->dx > draw->dy)

@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 11:18:02 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 12:26:53 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		main(int ac, char **av)
 {
 	void		*param;
 	t_holder	hold;
-	
+
 	if (ac != 2)
 		ft_exit("usage: ./fdf <filename>", 1);
 	param = &hold;
@@ -30,7 +30,8 @@ int		main(int ac, char **av)
 	ft_init_dim(&hold.draw);
 	ft_center_origin(hold.map, &hold.draw);
 	hold.mlx = mlx_init();
-	hold.win = mlx_new_window(hold.mlx, hold.draw.img_width, hold.draw.img_height, av[1]);
+	hold.win = mlx_new_window(hold.mlx, hold.draw.img_width,\
+		hold.draw.img_height, av[1]);
 	hold.img = ft_fill_image(hold.mlx, hold.map, &hold.draw);
 	mlx_put_image_to_window(hold.mlx, hold.win, hold.img, 0, 0);
 	mlx_key_hook(hold.win, ft_events, param);

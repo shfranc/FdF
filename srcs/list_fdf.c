@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 11:58:44 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 14:07:49 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 18:31:41 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_map	*ft_fdf_listnew(int x, int y, int z, int color)
 	elem->y = y;
 	elem->z = z;
 	elem->color = color;
+	elem->res_color = color;
 	elem->next = NULL;
 	elem->down = NULL;
 	return (elem);
@@ -59,7 +60,6 @@ void	ft_fdf_lstlinkdown(t_map **head, t_map *row)
 		while (temp->down)
 			temp = temp->down;
 		temp->down = row;
-		
 		temp = temp->next;
 		under = row->next;
 		while (temp)

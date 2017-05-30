@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:21:19 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/30 18:12:11 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void		ft_center_origin(t_map *map, t_draw *draw)
 		while (temp_col)
 		{
 			temp_col->iso_x += MARGIN / 2;
+			temp_col->res_x = temp_col->iso_x;
 			temp_col->iso_y += draw->img_height - draw->ymax - MARGIN / 2;
+			temp_col->res_y = temp_col->iso_y;
 			temp_col = temp_col->next;
 		}
 		temp_row = temp_row->down;
