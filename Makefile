@@ -6,7 +6,7 @@
 #    By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/13 13:03:38 by sfranc            #+#    #+#              #
-#    Updated: 2017/05/31 11:31:07 by sfranc           ###   ########.fr        #
+#    Updated: 2017/05/31 12:21:25 by sfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = 	$(addprefix $(SRCS_PATH)/, init.c \
 		events.c \
 		translation.c \
 		color.c \
+		window.c \
 		list_fdf.c)
 OBJS =  $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 INCLUDES = includes minilibx libft/includes
