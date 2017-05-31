@@ -6,32 +6,11 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 17:12:14 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 18:12:11 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 16:37:11 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void		ft_isometric_projection(t_map *map, t_draw *draw)
-{
-	t_map *temp_row;
-	t_map *temp_col;
-
-	(void)draw;
-	temp_row = map;
-	while (temp_row)
-	{
-		temp_col = temp_row;
-		while (temp_col)
-		{
-			temp_col->iso_x = 70 * (temp_col->x - temp_col->y) / 100;
-			temp_col->iso_y = ((82 * temp_col->z) / 100 -\
-				(41 * (temp_col->x + temp_col->y) / 100));
-			temp_col = temp_col->next;
-		}
-		temp_row = temp_row->down;
-	}
-}
 
 void		ft_scale_up(t_map *map, int gap)
 {

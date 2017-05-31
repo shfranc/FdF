@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 12:21:02 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 13:09:09 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 16:45:24 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static void		ft_win_display_menu2(t_holder *hold)
 	mlx_string_put(hold->mlx, hold->win, hold->draw.img_width + 100, 205,\
 		0xFFFF00, "y: yellow");
 	mlx_string_put(hold->mlx, hold->win, hold->draw.img_width + 10, 225,\
+		0xFFFFFF, "+: zoom+");
+	mlx_string_put(hold->mlx, hold->win, hold->draw.img_width + 100, 225,\
+		0xFFFFFF, "-: zoom-");
+	mlx_string_put(hold->mlx, hold->win, hold->draw.img_width + 10, 245,\
+		0xFFFFFF, "c: cavalier (no zoom)");
+	mlx_string_put(hold->mlx, hold->win, hold->draw.img_width + 10, 265,\
 		0xFFFFFF, "5 or space: RESET");
 }
 

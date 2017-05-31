@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 12:58:10 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 16:42:43 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int ac, char **av)
 	ft_init_dim(&hold.draw);
 	ft_center_origin(hold.map, &hold.draw);
 	hold.mlx = mlx_init();
-	hold.win = mlx_new_window(hold.mlx, hold.draw.img_width + 200,\
+	hold.win = mlx_new_window(hold.mlx, hold.draw.img_width + 230,\
 		hold.draw.img_height, av[1]);
 	ft_win_display_menu(&hold);
 	hold.img = ft_fill_image(hold.mlx, hold.map, &hold.draw);

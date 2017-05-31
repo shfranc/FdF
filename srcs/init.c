@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:37 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 12:59:53 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 16:40:28 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_init_draw(t_draw *draw)
 	draw->nb_row = 0;
 	draw->nb_col = 0;
 	draw->scale = 0;
+	draw->zoom = 0;
 	draw->xmin = 0;
 	draw->xmax = 0;
 	draw->ymin = 0;
@@ -86,6 +87,6 @@ void	ft_init_dim(t_draw *draw)
 	(ft_abs(draw->xmin) + ft_abs(draw->xmax)) + MARGIN : MAXWIDTH;
 	draw->img_height = (ft_abs(draw->ymin) + ft_abs(draw->ymax)) < MAXHEIGHT ?\
 	(ft_abs(draw->ymin) + ft_abs(draw->ymax)) + MARGIN : MAXHEIGHT;
-	if (draw->img_height < 250)
-		draw->img_height = 250;
+	if (draw->img_height < 290)
+		draw->img_height = 290;
 }

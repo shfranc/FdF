@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 11:58:44 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 18:31:41 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 15:28:11 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_map	*ft_fdf_listnew(int x, int y, int z, int color)
 	elem->x = x;
 	elem->y = y;
 	elem->z = z;
+	elem->ori_x = x;
+	elem->ori_y = y;
+	elem->ori_z = z;
 	elem->color = color;
 	elem->res_color = color;
 	elem->next = NULL;

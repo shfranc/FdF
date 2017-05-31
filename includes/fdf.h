@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 12:28:19 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 16:38:23 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct	s_map
 	int				x;
 	int				y;
 	int				z;
+	int				ori_x;
+	int				ori_y;
+	int				ori_z;
 	int				color;
 	int				res_color;
 	int				iso_x;
@@ -45,6 +48,7 @@ typedef struct	s_draw
 	int				nb_row;
 	int				nb_col;
 	int				scale;
+	int				zoom;
 	int				xmin;
 	int				xmax;
 	int				ymin;
@@ -86,6 +90,7 @@ void			ft_init_dim(t_draw *draw);
 */
 void			ft_scale_up(t_map *map, int gap);
 void			ft_isometric_projection(t_map *map, t_draw *draw);
+void			ft_cavaliere_projection(t_map *map, t_draw *draw);
 void			ft_center_origin(t_map *map, t_draw *draw);
 void			*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
 void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
@@ -96,9 +101,11 @@ void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
 int				ft_events(int keycode, void *param);
 void			ft_change_origin(int keycode, t_holder *hold);
 void			ft_change_color(int keycode, t_holder *hold);
+void			ft_zoom_in(t_holder *hold);
+void			ft_zoom_out(t_holder *hold);
 
 /*
-** Window writing
+** Display manual
 */
 void			ft_win_display_menu(t_holder *hold);
 

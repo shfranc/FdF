@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:21:28 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 16:46:43 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 18:08:16 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int		ft_atoi_base(char *str, int base)
 {
 	static char	tab[16] = "0123456789ABCDEF";
-	char 	*copy;
-	char	*tmp;
-	long	nb;
-	int		sign;
+	char		*copy;
+	char		*tmp;
+	long		nb;
+	int			sign;
 
 	if (base < 2 || base > 16)
 		return (0);
