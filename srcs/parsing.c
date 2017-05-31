@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 10:33:01 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 11:57:35 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 11:44:14 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ static int		ft_len_line(char *line)
 	return (len);
 }
 
+static void		ft_check_data(char **tab)
+{
+	if ((tab[0][0] == '-' && ft_isnumber((*tab + 1))) || ft_isnumber(tab[0]))
+		;
+	else
+		ft_exit("Wrong data. Exiting.", 1);
+	if (!tab[1])
+		return ;
+	if (tab[1][0] != '0' || tab[1][1] != 'x')
+		ft_exit("Color not in hexadecimal. Exiting.", 1);
+}
+
 static t_map	*ft_get_row(int row, char *line)
 {
 	t_map	*elem;
@@ -37,41 +49,18 @@ static t_map	*ft_get_row(int row, char *line)
 	while (tab[i])
 	{
 		temp = ft_strsplit(tab[i], ',');
+		ft_check_data(temp);
 		if (ft_tablen(temp) == 1)
 			elem = ft_fdf_listnew(i, -1 * row, -1 * ft_atoi(temp[0]), 0xFFFFFF);
 		else
-		{
 			elem = ft_fdf_listnew(i, -1 * row, -1 * ft_atoi(temp[0]),\
 				ft_atoi_base((*(temp + 1) + 2), 16));
-		}
 		ft_fdf_lstaddlast(&head, elem);
 		ft_freetab(&temp);
 		i++;
 	}
 	ft_freetab(&tab);
 	return (head);
-}
-
-void			ft_fdf_display_matrix(t_map *map)
-{
-	t_map *temp_row;
-	t_map *temp_col;
-
-	temp_row = map;
-	while (temp_row)
-	{
-		temp_col = temp_row;
-		while (temp_col)
-		{
-			ft_putnbr(temp_col->z);
-			if (temp_col->next)
-				write(1, " ", 1);
-			else
-				write(1, "\n", 1);
-			temp_col = temp_col->next;
-		}
-		temp_row = temp_row->down;
-	}
 }
 
 t_map			*ft_get_data(char *path, t_draw *draw)

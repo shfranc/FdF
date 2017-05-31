@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:37 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 10:53:39 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 11:35:32 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ft_fetch_height(t_map *map, t_draw *draw)
 		temp_row = temp_row->down;
 	}
 	draw->height = ft_abs(draw->zmin) + ft_abs(draw->zmax);
-	ft_putnbr_endl(draw->height);
 }
 
 void	ft_init_scale(t_draw *draw)
