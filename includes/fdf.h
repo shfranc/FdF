@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 18:30:35 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 11:31:25 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,13 @@ void			ft_isometric_projection(t_map *map, t_draw *draw);
 void			ft_center_origin(t_map *map, t_draw *draw);
 void			*ft_fill_image(void *mlx, t_map *map, t_draw *draw);
 void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y);
-void			ft_putpixel(char *ram, int i, int code);
 
 /*
 ** Events handler
 */
 int				ft_events(int keycode, void *param);
+void			ft_change_origin(int keycode, t_holder *hold);
+void			ft_change_color(int keycode, t_holder *hold);
 
 /*
 ** fdf linked lists

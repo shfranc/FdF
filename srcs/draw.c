@@ -6,13 +6,21 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 18:02:23 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/30 12:39:27 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/05/31 11:30:59 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	ft_xaxis_draw(char *ram, t_draw *draw, int color)
+static void		ft_putpixel(char *ram, int i, int color)
+{
+	*(ram + i * 4 + 0) = (color & PIX_BLUE);
+	*(ram + i * 4 + 1) = (color & PIX_GREEN) >> 8;
+	*(ram + i * 4 + 2) = (color & PIX_RED) >> 16;
+	*(ram + i * 4 + 3) = 0;
+}
+
+static void		ft_xaxis_draw(char *ram, t_draw *draw, int color)
 {
 	int	cumul;
 	int	i;
@@ -38,7 +46,7 @@ static void	ft_xaxis_draw(char *ram, t_draw *draw, int color)
 	}
 }
 
-static void	ft_yaxis_draw(char *ram, t_draw *draw, int color)
+static void		ft_yaxis_draw(char *ram, t_draw *draw, int color)
 {
 	int	cumul;
 	int	i;
@@ -64,7 +72,7 @@ static void	ft_yaxis_draw(char *ram, t_draw *draw, int color)
 	}
 }
 
-void		ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
+void			ft_drawline(char *ram, t_draw *draw, t_map *pt_x, t_map *pt_y)
 {
 	draw->start_x = pt_x->iso_x;
 	draw->start_y = pt_x->iso_y;
