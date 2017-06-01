@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:47:18 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 16:38:23 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/06/01 11:01:48 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # define PIX_BLUE 0xFF
 # define PIX_GREEN 0xFF00
@@ -80,7 +81,6 @@ typedef struct	s_holder
 */
 t_map			*ft_get_data(char *path, t_draw *draw);
 void			ft_fetch_height(t_map *map, t_draw *draw);
-void			ft_init_draw(t_draw *draw);
 void			ft_init_scale(t_draw *draw);
 void			ft_fetch_dim(t_map *map, t_draw *draw);
 void			ft_init_dim(t_draw *draw);

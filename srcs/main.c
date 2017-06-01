@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 17:46:36 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 16:42:43 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/06/01 10:55:59 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		ft_exit("usage: ./fdf <filename>", 1);
 	param = &hold;
-	ft_init_draw(&hold.draw);
+	ft_bzero(&hold.draw, sizeof(t_draw));
 	hold.map = ft_get_data(av[1], &hold.draw);
 	ft_fetch_height(hold.map, &hold.draw);
 	ft_init_scale(&hold.draw);

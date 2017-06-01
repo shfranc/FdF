@@ -6,7 +6,7 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 10:33:01 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 11:44:14 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/06/01 11:02:52 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ t_map			*ft_get_data(char *path, t_draw *draw)
 
 	map = NULL;
 	if ((fd = open(path, O_RDONLY)) == -1)
-		ft_exit(ft_strjoin("No file ", path), 1);
+	{
+		perror(path);
+		exit(1);
+	}
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (!draw->nb_col)

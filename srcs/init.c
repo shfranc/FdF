@@ -6,28 +6,11 @@
 /*   By: sfranc <sfranc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:37 by sfranc            #+#    #+#             */
-/*   Updated: 2017/05/31 16:40:28 by sfranc           ###   ########.fr       */
+/*   Updated: 2017/06/01 10:56:57 by sfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	ft_init_draw(t_draw *draw)
-{
-	draw->nb_row = 0;
-	draw->nb_col = 0;
-	draw->scale = 0;
-	draw->zoom = 0;
-	draw->xmin = 0;
-	draw->xmax = 0;
-	draw->ymin = 0;
-	draw->ymax = 0;
-	draw->zmin = 0;
-	draw->zmax = 0;
-	draw->height = 0;
-	draw->img_width = 0;
-	draw->img_height = 0;
-}
 
 void	ft_fetch_height(t_map *map, t_draw *draw)
 {

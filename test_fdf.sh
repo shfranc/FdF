@@ -22,7 +22,6 @@ echo "\033[01;34mTests moyens\033[00m"
 ./fdf maps/50-4.fdf
 ./fdf maps/pyra.fdf
 ./fdf maps/elem.fdf
-./fdf maps/pylone.fdf
 
 echo "\033[01;34mTests grande map\033[00m"
 ./fdf maps/100-6.fdf
